@@ -11,4 +11,10 @@ class BestBuyService
     response = @conn.get(url)
     JSON.parse(response.body)
   end
+
+  def create_stores(json_stores)
+    json_stores.map do |json_store|
+      Store.new(json_store)
+    end
+  end
 end 
