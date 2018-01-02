@@ -7,6 +7,10 @@ class BestBuyService
     end 
   end
 
+  def get_stores(zipcode)
+    json_stores = call_api(zipcode)
+    create_stores(json_stores)
+  end 
   
   def create_stores(json_stores)
     json_stores.map do |json_store|
