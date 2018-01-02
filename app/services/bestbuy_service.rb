@@ -23,6 +23,7 @@ class BestBuyService
   end 
 
   private 
+    
     def get_json(url)
       response = @conn.get(url)
       JSON.parse(response.body)
