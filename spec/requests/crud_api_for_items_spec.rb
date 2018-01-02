@@ -26,7 +26,7 @@ describe "When I send a request to the api and" do
 
     get '/api/v1/items/1'
 
-    expect(response.status).to eq 200
+    expect(response.status).to eq 204
 
     items = JSON.parse(response.body)
     

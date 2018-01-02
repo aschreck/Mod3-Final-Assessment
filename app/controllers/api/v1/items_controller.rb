@@ -10,7 +10,8 @@ class Api::V1::ItemsController < ActionController::API
   end
 
   def destroy
-    
+    item = Item.find(params[:id])
+    item.destroy
   end
 
   def create
