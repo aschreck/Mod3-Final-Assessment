@@ -16,7 +16,7 @@ class Api::V1::ItemsController < ActionController::API
 
   def create
     item = Item.create(item_params)
-    render json: item, serializer: ItemSerializer
+    render json: item, serializer: ItemSerializer, status: 201
   end
 
   private 
