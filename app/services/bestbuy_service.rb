@@ -7,14 +7,20 @@ class BestBuyService
     end 
   end
 
-  def get_json(url)
-    response = @conn.get(url)
-    JSON.parse(response.body)
-  end
-
+  
   def create_stores(json_stores)
     json_stores.map do |json_store|
       Store.new(json_store)
     end
   end
+  
+  def call_api(zipcode)
+    get_json("stores(area(#{zipcode},25))?format=json&show=storeType,city,longName,distance,phone&apiKey=#{ENV["best_buy_key"]}")["stores"]
+  end 
+
+  private 
+    def get_json(url)
+      response = @conn.get(url)
+      JSON.parse(response.body)
+    end
 end 
