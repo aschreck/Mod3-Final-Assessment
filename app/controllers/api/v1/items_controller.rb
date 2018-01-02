@@ -5,7 +5,8 @@ class Api::V1::ItemsController < ActionController::API
   end 
 
   def show
-    
+    item = Item.find(params[:id])
+    render json: item, serializer: ItemSerializer
   end
 
   def destroy

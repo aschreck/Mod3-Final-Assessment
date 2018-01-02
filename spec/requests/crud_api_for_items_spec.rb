@@ -26,13 +26,14 @@ describe "When I send a request to the api and" do
 
     get '/api/v1/items/1'
 
-    expect(response).to be_success
+    expect(response.status).to eq 200
 
     items = JSON.parse(response.body)
-    expect(items[0].name).to eq item.name
-    expect(items[0].description).to eq item.description
-    expect(items[0].id).to eq item.id
-    expect(items[0].image_url).to eq item.image_url
+    
+    expect(items["name"]).to eq item.name
+    expect(items["description"]).to eq item.description
+    expect(items["id"]).to eq item.id
+    expect(items["image_url"]).to eq item.image_url
   end
 
   it "is a delete request to /api/v1/items/1, it deletes the item" do 
