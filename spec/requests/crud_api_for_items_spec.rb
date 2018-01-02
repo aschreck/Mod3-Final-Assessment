@@ -40,5 +40,15 @@ describe "When I send a request to the api and" do
 
     expect(Item.first).to eq nil 
   end
+
+  it "is a post request to /api/v1/items with attributes, it creates the item" do 
+    
+    post "/api/v1/items?description=cool&image_url=realcoolimage&name=coolthing"
+
+    item = Item.first
+    expect(item.name).to eq "coolthing"
+    expect(item.description).to eq "cool"
+    expect(item.image_url).to eq "realcoolimage"
+  end
 end
 
