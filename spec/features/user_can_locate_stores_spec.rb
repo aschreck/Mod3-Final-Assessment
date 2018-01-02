@@ -17,6 +17,8 @@ describe "A user type in a zipcode" do
     expect(page).to have_content("Phone Number:")
     expect(page).to have_content("Distance Away:")
     expect(page).to have_content("Store Type:")
+
+    expect(page).to have_selector('h1', count: 10)
     # And I should see the long name, city, distance, phone number and store type for each of the 10 results
   end
 end
