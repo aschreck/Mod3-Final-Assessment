@@ -1,7 +1,6 @@
 class Store 
+  attr_reader :name, :city, :type, :phone, :distance
   def initialize(info)
-    require 'pry'; binding.pry
-    
     @name = info["longName"] 
     @city = info["city"]
     @type = info["storeType"] 
