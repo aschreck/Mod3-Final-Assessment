@@ -4,12 +4,11 @@ class SearchController < ActionController::Base
 
   def index
     service = BestBuyService.new
-    json_stores = service.get_json("stores(area(#{params["search"]},25))?format=json&show=storeType,city,longName,distance,phone&apiKey=#{ENV["best_buy_key"]}")
+    json_stores = service.get_json("stores(area(#{params["search"]},25))?format=json&show=storeType,city,longName,distance,phone&apiKey=#{ENV["best_buy_key"]}")["stores"]
 
-    require 'pry'; binding.pry
     
     #response = Faraday.get("https://api.bestbuy.com/v1/stores(area(#{params["search"]},25))?format=json&show=storeType,city,longName,distance,phone&apiKey=#{ENV["best_buy_key"]}")
-   # json_stores = JSON.parse(response.body)["stores"]
+    # json_stores = JSON.parse(response.body)["stores"]
     @stores = []
     
     json_stores.each do |json_store|
