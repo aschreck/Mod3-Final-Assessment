@@ -5,6 +5,12 @@
     </div>
   </div>
   <div class="row"></div>
+  <div class="search">
+    <%= form_tag('/search', method: "get") do %>
+      <%=submit_tag 'Search', class: 'searchButton' %>
+      <%= text_field_tag 'search' %>
+    <% end %>
+  </div>
   <% @items.each do |item| %>
     <div class="item col-sm-3">
       <h5><%= item.name %></h5>
