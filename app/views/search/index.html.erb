@@ -1,8 +1,8 @@
 
 <% @stores.each do |store|%>
   <h1><%=store.name%></h1>
-  <p><%=store.city%></p>
-  <p><%=store.phone%></p>
-  <p><%=store.distance%></p>
-  <p><%=store.type%></p>
+  <p>Location: <%=store.city%></p>
+  <p>Phone Number: <%=store.phone%></p>
+  <p>Distance Away: <%=store.distance%></p>
+  <p>Store Type: <%=store.type%></p>
 <%end%>
