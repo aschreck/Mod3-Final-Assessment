@@ -54,6 +54,14 @@ describe "When I send a request to the api and" do
     expect(item.name).to eq "coolthing"
     expect(item.description).to eq "cool"
     expect(item.image_url).to eq "realcoolimage"
+    require 'pry'; binding.pry
+    
+    json_item = JSON.parse(response.body)
+
+    expect(items["name"]).to eq item.name
+    expect(items["description"]).to eq item.description
+    expect(items["id"]).to eq item.id
+    expect(items["image_url"]).to eq item.image_url
   end
 end
 
