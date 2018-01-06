@@ -9,7 +9,7 @@ class Store
   end
 
   def self.all_by_zip(zip)
-    json_stores = bestbuy.stores_by_zip(zip)
+    json_stores = bestbuy(zip).stores_by_zip
     create_stores(json_stores)
   end 
   
@@ -21,7 +21,7 @@ class Store
 
   private 
 
-    def self.bestbuy 
-      BestbuyService.new
+    def self.bestbuy(filter)
+      BestbuyService.new(filter)
     end 
 end 
