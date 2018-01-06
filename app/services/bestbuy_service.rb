@@ -8,18 +8,12 @@ class BestbuyService
   end
 
   def stores_by_zip(zipcode)
-    json_stores = call_api(zipcode)
-    create_stores(json_stores)
+    call_api(zipcode)["stores"]
   end 
-  
-  def create_stores(json_stores)
-    json_stores.map do |json_store|
-      Store.new(json_store)
-    end
-  end
-  
+
   def call_api(zipcode)
-    get_json("stores(area(#{zipcode},25))?format=json&show=storeType,city,longName,distance,phone&apiKey=#{ENV["best_buy_key"]}")["stores"]
+    url = "stores(area(#{zipcode},25))?format=json&show=storeType,city,longName,distance,phone&apiKey=#{ENV["best_buy_key"]}"
+    get_json(url)
   end 
 
   private 

@@ -9,8 +9,15 @@ class Store
   end
 
   def self.all_by_zip(zip)
-    bestbuy.stores_by_zip(zip)
+    json_stores = bestbuy.stores_by_zip(zip)
+    create_stores(json_stores)
   end 
+  
+  def self.create_stores(json_stores)
+    json_stores.map do |json_store|
+      Store.new(json_store)
+    end
+  end
 
   private 
 
