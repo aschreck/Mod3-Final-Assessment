@@ -1,7 +1,7 @@
 class BestbuyService
 
   def initialize
-    @conn = Faraday.new(:url => 'https://api.bestbuy.com/v1/') do |f|
+    @conn = Faraday.new(:url => 'https://api.bestbuy.com') do |f|
     f.request  :url_encoded             
     f.adapter  Faraday.default_adapter  
     end 
@@ -12,7 +12,7 @@ class BestbuyService
   end 
 
   def call_api(zipcode)
-    url = "stores(area(#{zipcode},25))?format=json&show=storeType,city,longName,distance,phone&apiKey=#{ENV["best_buy_key"]}"
+    url = "/v1/stores(area(#{zipcode},25))?format=json&show=storeType,city,longName,distance,phone&apiKey=#{ENV["best_buy_key"]}"
     get_json(url)
   end 
 
