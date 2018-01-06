@@ -15,19 +15,8 @@ class BestbuyService
       req.params["show"]   = "storeType,city,longName,distance,phone"
     end 
     JSON.parse(response.body)["stores"]
-    #call_api(zipcode)["stores"]
   end 
 
-  # def call_api(zipcode)
-  #   url = "/v1/stores(area(#{zipcode},25))?format=json&show=storeType,city,longName,distance,phone&apiKey=#{ENV["best_buy_key"]}"
-  #   get_json(url)
-  # end 
-
   private 
-    
     attr_reader :conn, :filter
-    # def get_json(url)
-    #   response = @conn.get(url)
-    #   JSON.parse(response.body)
-    # end
 end 
