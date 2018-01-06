@@ -1,4 +1,4 @@
-class BestBuyService
+class BestbuyService
 
   def initialize
     @conn = Faraday.new(:url => 'https://api.bestbuy.com/v1/') do |f|
@@ -7,7 +7,7 @@ class BestBuyService
     end 
   end
 
-  def get_stores(zipcode)
+  def stores_by_zip(zipcode)
     json_stores = call_api(zipcode)
     create_stores(json_stores)
   end 
@@ -24,6 +24,7 @@ class BestBuyService
 
   private 
     
+    attr_reader :conn
     def get_json(url)
       response = @conn.get(url)
       JSON.parse(response.body)
